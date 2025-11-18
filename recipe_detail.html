@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>만능레시피 | 상세 레시피</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a href="master_recipe.html" class="brand-wrap">
+      <img src="assets/logo.png" alt="만능레시피 로고" class="logo" />
+      <h1 class="brand">만능레시피</h1>
+    </a>
+
+    <div class="login-area"></div>
+  </header>
+
+  <nav class="tabbar">
+    <a class="tab" href="master_recipe.html">재료입력</a>
+    <a class="tab" href="popular_recipe.html">오늘의 인기 레시피</a>
+    <a class="tab" href="mypage.html">마이페이지</a>
+    <a class="tab" href="support.html">고객지원</a>
+  </nav>
+
+  <main class="container">
+    <section class="detail-card">
+      <div class="detail-img-wrap">
+        <img src="" alt="레시피 이미지" class="detail-img" id="recipeImg" />
+      </div>
+
+      <div class="detail-info">
+        <div class="detail-header">
+          <h2 class="recipe-title" id="recipeTitle">로딩중...</h2>
+          <button id="likeBtn" class="heart-btn">❤</button>
+        </div>
+
+        <p class="recipe-desc" id="recipeDesc"></p>
+
+        <h3 class="recipe-subtitle">재료</h3>
+        <p class="recipe-ingredients" id="recipeIngredients"></p>
+
+        <h3 class="recipe-subtitle">만드는 법</h3>
+        <ol class="recipe-steps" id="recipeSteps"></ol>
+
+        <h3 class="recipe-subtitle">TIP</h3>
+        <p id="recipeTip"></p>
+
+        <div class="back-btn-wrap">
+          <button id="backBtn" class="btn-back">돌아가기</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 만능레시피</footer>
+
+  <!-- 로그인 상태 -->
+<script src="js/nav_user.js"></script>
+
+<!-- 🔥 1) 상세 정보를 먼저 로딩해야 함 -->
+<script src="js/recipe_detail.js"></script>
+
+<!-- 🔥 2) 좋아요 버튼은 제목이 로딩된 뒤에 실행해야 함 -->
+<script src="js/like_recipe.js"></script>
+
+</body>
+</html>

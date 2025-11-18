@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1763456055,
+        "name": "테스트",
+        "email": "test123@naver.com",
+        "message": "앵무새가 너무 귀여워요!",
+        "file": "1763456055_2-Profile-Sky.png",
+        "created": "2025-11-18 17:54:15"
+    },
+    {
+        "id": 1763456624,
+        "name": "김지유",
+        "email": "test123@naver.com",
+        "message": "김지유 짱!!",
+        "file": "1763456624_2-Profile-Sky.png",
+        "created": "2025-11-18 18:03:44"
+    }
+]

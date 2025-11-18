@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>만능레시피 | 추천결과</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="master_recipe.html" class="brand-wrap">
+      <img src="assets/logo.png" alt="만능레시피 로고" class="logo" />
+      <h1 class="brand">만능레시피</h1>
+    </a>
+
+    <div class="login-area">
+      <a href="login.html" class="link">로그인</a> /
+      <a href="signup.html" class="link">회원가입</a>
+    </div>
+  </header>
+
+  <nav class="tabbar">
+    <a class="tab active" href="master_recipe.html">재료입력</a>
+    <a class="tab" href="popular_recipe.html">오늘의 인기 레시피</a>
+    <a class="tab" href="mypage.html">마이페이지</a>
+    <a class="tab" href="support.html">고객지원</a>
+  </nav>
+
+  <main class="container">
+    <section class="recommend">
+
+      <h2 class="recommend-title">AI가 추천해요!</h2>
+      <p class="recommend-desc">사용자의 재료를 바탕으로 레시피를 추천해봤어요.</p>
+
+      <!-- ⭐️⭐️⭐️ 이걸 반드시 넣어야 JS가 실행됨 -->
+      <div id="recommendContainer"></div>
+
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 만능레시피</footer>
+
+  <script src="js/nav_user.js"></script>
+  <script src="js/result.js"></script>
+</body>
+</html>

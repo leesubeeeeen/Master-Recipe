@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>만능레시피 | 재료입력</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header class="topbar">
+  <a href="master_recipe.html" class="brand-wrap">
+    <img src="assets/logo.png" alt="로고" class="logo">
+    <h1 class="brand">만능레시피</h1>
+  </a>
+
+  <!-- ✅ [수정] 로그인 상태 표시 영역 -->
+  <div class="login-area">
+    <a href="login.html" class="link">로그인</a> /
+    <a href="signup.html" class="link">회원가입</a>
+  </div>
+</header>
+
+<nav class="tabbar">
+  <a class="tab active" href="master_recipe.html">재료입력</a>
+  <a class="tab" href="popular_recipe.html">오늘의 인기 레시피</a>
+  <a class="tab" href="mypage.html">마이페이지</a>
+  <a class="tab" href="support.html">고객지원</a>
+</nav>
+
+<main class="container">
+  <section class="hero">
+    <div class="title-row">
+      <h2 class="page-title">재료 입력</h2>
+
+      <div class="searchbar long" id="openModal">
+        <span class="icon">🔍</span>
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search"
+          aria-label="검색어 입력"
+          readonly
+        />
+      </div>
+    </div>
+
+    <div class="ingredient-box" id="ingredientBox">
+      <div class="edit-buttons hidden" id="editButtons">
+        <button id="editBtn" class="btn-small">수정</button>
+        <button id="clearBtn" class="btn-small">삭제</button>
+      </div>
+    </div>
+
+    <div class="cta">
+      <a href="results.html" class="btn-primary">레시피 검색하기</a>
+    </div>
+  </section>
+</main>
+
+<!-- ================= 모달 ================= -->
+<div class="modal hidden" id="ingredientModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-search">
+        <span class="icon">🔍</span>
+        <input id="ingredientInput" type="text" placeholder="재료를 입력하세요 (Enter)" />
+      </div>
+      <button class="btn-close" id="closeModal">✖</button>
+    </div>
+
+    <hr class="modal-line" />
+    <div class="tag-container" id="tagContainer"></div>
+    <div class="modal-footer">
+      <button id="finishInput" class="btn-finish">입력 완료</button>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ [수정] 기존 하드코딩 로그인 스크립트 제거 -->
+<!-- <script>const isLoggedIn = false; ...</script> -->
+
+<!-- ✅ [추가] nav_user.js로 로그인 상태 자동 처리 -->
+<script src="js/nav_user.js"></script>
+
+<!-- ✅ [추가] 재료 입력 기능 (localStorage 연동 포함) -->
+<script src="js/ingredient_input.js"></script>
+
+</body>
+</html>

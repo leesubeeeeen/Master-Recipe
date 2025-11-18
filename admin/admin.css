@@ -1,0 +1,556 @@
+/* ======================================
+   폰트 / 기본값
+====================================== */
+@font-face {
+  font-family: 'DungGeunMo';
+  src: url('../assets/DungGeunMo.ttf') format('truetype');
+}
+* {
+  box-sizing: border-box;
+  font-family: 'DungGeunMo', monospace;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f5f5f5;
+  color: #111;
+}
+
+/* ======================================
+   상단바
+====================================== */
+.admin-topbar {
+  background: #f5d7f0;
+  padding: 22px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #e9e9e9;
+}
+
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #111;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.brand {
+  font-size: 32px;
+}
+.logout-btn {
+  cursor: pointer;
+  padding: 6px 14px;
+  border: 2px solid #000;
+  background: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* ======================================
+   메인 컨테이너
+====================================== */
+.admin-container {
+  width: min(1120px, 90vw);
+  margin: 40px auto;
+}
+
+/* 검색창 + 버튼 */
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-input {
+  width: 260px;
+  height: 40px;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 8px 14px;
+}
+
+.btn-add {
+  background: #fdefff;
+  border: 2px solid #c9b9c9;
+  padding: 12px 26px;
+  font-size: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #c9b9c9;
+}
+.btn-add:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #c9b9c9;
+}
+
+/* ======================================
+   레시피 카드 그리드
+====================================== */
+.recipe-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+/* 카드 하나 */
+.recipe-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.recipe-title {
+  font-size: 20px;
+  margin-top: 12px;
+}
+
+.likes {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #444;
+}
+
+.edit-btn {
+  margin-top: 12px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: none;
+  cursor: pointer;
+}
+/* 핑크 상단바 */
+.admin-topbar {
+  background: #f5d7f0;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #e9e9e9;
+}
+
+/* 로고 */
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #111;
+}
+.brand-wrap .logo {
+  width: 64px;
+  margin-right: 14px;
+}
+.brand {
+  font-size: 32px;
+  margin: 0;
+}
+
+.admin-subnav {
+  background: white;
+  padding: 16px 32px;
+  border-bottom: 1px solid #dcdcdc;
+  display: flex;
+  justify-content: center;   /* ← 이거 없어서 왼쪽 정렬됐던거임 */
+  gap: 48px;
+  font-size: 20px;
+}
+
+.admin-subnav a {
+  text-decoration: none;
+  color: #222;
+}
+
+.admin-subnav a.active {
+  color: #d94444;
+  font-weight: bold;
+}
+/* ===== 레시피 수정 레이아웃 ===== */
+.edit-wrapper {
+  background: white;
+  padding: 36px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.img-box img {
+  width: 260px;
+  height: 200px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.edit-info {
+  flex: 1;
+}
+
+.edit-title {
+  font-size: 26px;
+  margin-bottom: 12px;
+}
+
+/* input, textarea 공통 */
+.input-box,
+.textarea-box {
+  width: 100%;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  outline: none;
+  margin-bottom: 16px;
+  background: #fafafa;
+}
+
+.textarea-box {
+  min-height: 110px;
+  resize: none;
+}
+
+.btn-submit {
+  background: #fdefff;
+  border: 2px solid #c9b9c9;
+  padding: 12px 34px;
+  font-size: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  float: right;
+  box-shadow: 0 5px 0 #c9b9c9;
+}
+.btn-submit:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #c9b9c9;
+}
+/* ===== AI 추천 로직 폼 전체 박스 ===== */
+.rule-wrapper {
+  margin-top: -20px;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.rule-title {
+  font-size: 28px;
+  margin-bottom: 32px;
+}
+
+/* 각 입력 줄 */
+.rule-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.rule-row label {
+  width: 200px;
+  font-size: 22px;
+}
+
+/* input 박스 공통 */
+.input-box {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fafafa;
+}
+
+/* 작은 input (조리시간) */
+.input-box.small {
+  width: 140px;
+}
+
+/* 긴 input */
+.input-box.long {
+  flex: 1;
+}
+
+/* textarea */
+.textarea-box {
+  flex: 1;
+  height: 120px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 12px;
+  background: #fafafa;
+  resize: none;
+}
+
+.tilde {
+  font-size: 20px;
+  margin: 0 6px;
+}
+
+/* 버튼 */
+.btn-submit {
+  background: #fdefff;
+  border: 2px solid #c9b9c9;
+  padding: 12px 34px;
+  font-size: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #c9b9c9;
+
+  display: block;        /* 추가 */
+  margin-left: auto;     /* 추가 → 오른쪽 정렬 */
+  margin-top: 20px;      /* 여백 정렬 */
+}
+.btn-submit {
+  margin-top: -20px;   /* 버튼을 위로 끌어올림 */
+  margin-right: 10px;  /* 오른쪽 여백 */
+  float: right;        /* 오른쪽 정렬 */
+}
+
+/*support.php*/
+.support-container {
+  width: min(1120px, 90vw);
+  margin: 40px auto;
+}
+
+.support-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.support-list {
+  background: white;
+  padding: 40px 40px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.support-item {
+  display: block;
+  font-size: 24px;
+  padding: 24px 0;
+  color: #111;
+  text-decoration: none;
+}
+
+.support-item .heart {
+  margin-right: 14px;
+}
+
+.support-item:not(:last-child) {
+  border-bottom: 1px solid #ececec;
+}
+/* ===== 공지사항 페이지 전용 ===== */
+
+.notice-title {
+  margin: 40px 0 20px 20px;
+  font-size: 26px;
+}
+
+.notice-box {
+  background: #eeeeee;
+  padding: 30px;
+  border-radius: 10px;
+  width: 92%;
+  margin-left: 20px;
+}
+
+.notice-box textarea {
+  width: 100%;
+  height: 240px;
+  border-radius: 8px;
+  border: none;
+  padding: 12px;
+  resize: none;
+  font-size: 16px;
+  font-family: 'DungGeunMo';
+  margin-bottom: 15px;   /* ✨ 버튼과 간격 띄우기 */
+}
+
+.btn-row {
+  text-align: right;
+  margin-top: 16px;
+}
+
+.btn-submit {
+  background: #fdefff;
+  border: 2px solid #c9b9c9;
+  padding: 10px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 4px 0 #c9b9c9;
+  
+}
+
+.btn-submit:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #c9b9c9;
+}
+/* ================================
+      FAQ 페이지 스타일
+================================ */
+
+.faq-wrapper {
+  margin-top: 40px;
+}
+
+.faq-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.faq-title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.faq-box {
+  background: #efefef;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.faq-section {
+  margin-bottom: 40px;
+}
+
+.faq-section-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.faq-section p {
+  margin-bottom: 20px;
+  line-height: 1.7;
+  font-size: 18px;
+}
+.inquiry-item {
+  background: #fff;
+  border: 2px solid #dcdcdc;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inquiry-item .view-btn {
+  background: #fdefff;
+  border: 2px solid #c9b9c9;
+  padding: 10px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #c9b9c9;
+}
+.inquiry-view-wrapper {
+  display: flex;
+  gap: 40px;
+  margin-top: 20px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.inquiry-left,
+.inquiry-middle,
+.inquiry-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.inquiry-left {
+  width: 260px;
+}
+
+.inquiry-middle {
+  flex: 1;
+}
+
+.inquiry-right {
+  flex: 1;
+}
+
+.label-title {
+  font-size: 18px;
+  margin-bottom: 8px;
+  margin-top: 10px;
+}
+
+.input-box {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #dcdcdc;
+  border-radius: 10px;
+  background: #fafafa;
+  margin-bottom: 16px;
+}
+
+.textarea-box {
+  width: 100%;
+  height: 220px;
+  padding: 14px;
+  border: 2px solid #dcdcdc;
+  border-radius: 10px;
+  background: #fafafa;
+  resize: none;
+}
+.page-title-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.inquiry-count-text {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.inquiry-list-wrapper {
+  margin-top: 20px;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.inquiry-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #555;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  font-size: 18px;
+  background: white;
+}
+
+.inquiry-btn {
+  background: #fff;
+  border: 2px solid #000;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: 'DungGeunMo';
+}

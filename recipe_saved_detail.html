@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>만능레시피 | 저장된 레시피</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="master_recipe.html" class="brand-wrap">
+      <img src="assets/logo.png" class="logo" />
+      <h1 class="brand">만능레시피</h1>
+    </a>
+    <div class="login-area"></div>
+  </header>
+
+  <nav class="tabbar">
+    <a class="tab" href="master_recipe.html">재료입력</a>
+    <a class="tab" href="popular_recipe.html">오늘의 인기 레시피</a>
+    <a class="tab" href="mypage.html">마이페이지</a>
+    <a class="tab" href="support.html">고객지원</a>
+  </nav>
+
+  <main class="container">
+    <section class="detail-card">
+
+      <div class="detail-img-wrap">
+        <img id="recipeImg" class="detail-img" />
+      </div>
+
+      <div class="detail-info">
+        <h2 id="recipeTitle" class="recipe-title"></h2>
+
+        <p id="recipeDesc"></p>
+
+        <h3>재료</h3>
+        <p id="recipeIngredients"></p>
+
+        <h3>만드는 법</h3>
+        <ol id="recipeSteps"></ol>
+
+        <h3>TIP</h3>
+        <p id="recipeTip"></p>
+
+        <button onclick="history.back()" class="btn-back">돌아가기</button>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 만능레시피</footer>
+
+  <!-- 로그인 상태 -->
+  <script src="js/nav_user.js"></script>
+
+  <!-- 저장된 레시피 로딩 -->
+  <script src="js/recipe_saved_detail.js"></script>
+
+</body>
+</html>

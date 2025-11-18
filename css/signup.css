@@ -1,0 +1,139 @@
+/*[추가] UI설계 화면에 없었던 회원가입 화면 생성으로, 회원가입 화면에 필요한 css코드 새로 생성*/
+:root {
+  --ink:#111;
+  --bg:#ffffff;
+  --brand-bg:#f5d7f0;
+}
+
+@font-face {
+  font-family: 'DungGeunMo';
+  src: url('DungGeunMo.ttf') format('truetype');
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+  font-family: 'DungGeunMo', monospace;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between; /* 왼쪽-오른쪽 배치 */
+  align-items: center;
+  height: 100px;
+  background: var(--brand-bg);
+  border-bottom: 1px solid var(--line);
+  padding: 0 60px; /* 좌우 여백 넉넉하게 */
+  box-sizing: border-box;
+}
+
+
+/* 브랜드 로고 그룹 */
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+/* 로그인 영역 (오른쪽 정렬) */
+.login-area {
+  font-size: 18px;
+  color: #111;
+  text-decoration: none;
+  font-family: 'DungGeunMo', monospace;
+}
+.logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.brand {
+  margin: 0;
+  font-size: 40px;
+  letter-spacing: .02em;
+}
+
+.container {
+  width: min(820px, 92vw);
+  margin: 80px auto 100px;
+}
+
+.signup-form {
+  display: grid;
+  grid-template-columns: 260px 1fr; 
+  align-items: center;
+  column-gap: 30px;
+  row-gap: 24px;
+}
+
+.label {
+  font-size: 30px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.input-lg {
+  height: 54px;
+  padding: 0 16px;
+  font-size: 18px;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  background: #fff;
+  outline: none;
+  width: 100%; 
+}
+
+.input-lg:focus {
+  border-color: #d9d9d9;
+}
+
+.cta {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.btn-join {
+  min-width: 200px;
+  height: 60px;
+  font-size: 22px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  background: #efefef;
+  box-shadow: 0 6px 0 #cfcfcf;
+  color: #111;
+  cursor: pointer;
+}
+
+.btn-join:hover {
+  background: var(--brand-bg);
+}
+
+@media (max-width: 720px) {
+  .signup-form {
+    grid-template-columns: 1fr;
+  }
+
+  .label {
+    text-align: left;
+    font-size: 24px;
+  }
+}
+
+/* 모든 링크 상태 동일 색상 유지 */
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #111;
+  text-decoration: none;
+}

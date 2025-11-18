@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>만능레시피 | 로그인</title>
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a href="master_recipe.html" class="brand-wrap">
+      <img src="assets/logo.png" alt="만능레시피 로고" class="logo" />
+      <h1 class="brand">만능레시피</h1>
+    </a>
+
+    <!-- 로그인/회원가입 라인 (nav_user.js가 수정해줌) -->
+    <div class="login-area">
+      <a href="login.html" class="link">로그인</a> /
+      <a href="signup.html" class="link">회원가입</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- ⭐ PHP 로그인 연동을 위해 form 수정됨 -->
+    <form class="login-form" aria-label="로그인 폼" action="login.php" method="POST">
+      <div class="row">
+        <label for="login-id" class="label">아이디</label>
+        <input id="login-id" name="id" class="input-lg" type="text" required />
+      </div>
+
+      <div class="row">
+        <label for="login-pw" class="label">비밀번호</label>
+        <input id="login-pw" name="pw" class="input-lg" type="password" required />
+      </div>
+
+      <div class="cta">
+        <!-- ⭐ 버튼이 submit으로 변경됨 -->
+        <button type="submit" class="btn-login">로그인</button>
+      </div>
+
+      <p class="helper">
+        <a href="#" class="link">아이디/비밀번호를 잊으셨나요?</a>
+        <span class="divider"> / </span>
+        <a href="signup.html" class="link">회원가입</a>
+      </p>
+    </form>
+  </main>
+
+  <footer class="footer"></footer>
+
+  <!-- ⭐ 기존 login.js 삭제 (PHP가 처리) -->
+  <!-- ⭐ 로그인 상태 표시 스크립트는 계속 사용 -->
+  <script src="js/nav_user.js"></script>
+</body>
+</html>

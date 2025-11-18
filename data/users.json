@@ -1,0 +1,22 @@
+[
+    {
+        "id": "ahdtlfdl5356",
+        "pw": "ahdtlfdl999!",
+        "name": "이수빈",
+        "email": "ahdtlfdl5356@naver.com",
+        "phone": "",
+        "liked": [],
+        "recentSearch": [],
+        "createdAt": "2025-11-16 12:01"
+    },
+    {
+        "id": "test123",
+        "pw": "test123",
+        "name": "테스트",
+        "email": "test123@naver.com",
+        "phone": "",
+        "liked": [],
+        "recentSearch": [],
+        "createdAt": "2025-11-17 01:38"
+    }
+]
