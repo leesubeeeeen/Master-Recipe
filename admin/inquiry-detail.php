@@ -85,7 +85,32 @@ if (!$inquiry) {
 
   </div>
 
-  <button class="btn-submit" style="margin-top: 24px;">등록하기</button>
+  <button class="btn-submit" id="saveAnswerBtn" style="margin-top: 24px;">등록하기</button>
+  <script>
+  document.getElementById("saveAnswerBtn").addEventListener("click", async () => {
+    const answer = document.querySelector(".inquiry-right textarea").value.trim();
+
+    if (!answer) {
+      alert("답변을 입력해주세요!");
+      return;
+    }
+
+    const form = new FormData();
+    form.append("id", "<?= $inquiry['id'] ?>");
+    form.append("answer", answer);
+
+    const res = await fetch("inquiry_answer_save.php", {
+      method: "POST",
+      body: form
+    });
+
+
+    const text = await res.text();
+    alert(text);
+    location.href = "inquiry.php";  // 리스트 페이지로 이동
+  });
+  </script>
+
 
 </div>
 

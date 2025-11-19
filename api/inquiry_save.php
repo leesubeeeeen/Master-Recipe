@@ -11,6 +11,7 @@ if (!file_exists($filePath)) {
 
 // 기존 데이터 불러오기
 $data = json_decode(file_get_contents($filePath), true);
+if (!is_array($data)) $data = []; // 안전장치
 
 // 업로드 파일 처리
 $uploaded_file_path = "";
@@ -32,21 +33,29 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] === 0) {
 $name = $_POST["name"];
 $email = $_POST["email"];
 $message = $_POST["message"];
+$userId = $_POST["userId"] ?? "";   // 🔥 변경
 
-// id는 time()으로 유니크하게 생성
+// id 생성
+$id = time();
+
+// 새로운 문의 객체 (🔥 완전 버전)
 $newInquiry = [
-    "id" => time(),
+    "id" => $id,
     "name" => $name,
     "email" => $email,
+    "userId" => $userId,
     "message" => $message,
     "file" => $uploaded_file_path ?: "",
-    "created" => date("Y-m-d H:i:s")
+    "created" => date("Y-m-d H:i:s"),
+    "answer" => "",
+    "answered" => false,
+    "checked" => false
 ];
 
-// 새로운 항목 JSON에 추가
+// JSON에 추가
 $data[] = $newInquiry;
 
-// JSON에 저장
+// 저장
 file_put_contents($filePath, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
 echo "문의가 성공적으로 제출되었습니다!";

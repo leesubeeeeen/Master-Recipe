@@ -1,6 +1,12 @@
 document.getElementById("inquiryForm").addEventListener("submit", async function(e){
   e.preventDefault();
 
+  const loginUser = JSON.parse(localStorage.getItem("loginUser"));
+  if (!loginUser) {
+    alert("로그인 후 문의를 남길 수 있습니다.");
+    return;
+  }
+
   const name = document.getElementById("inquiryName").value.trim();
   const email = document.getElementById("inquiryEmail").value.trim();
   const message = document.getElementById("inquiryMessage").value.trim();
@@ -15,6 +21,7 @@ document.getElementById("inquiryForm").addEventListener("submit", async function
   formData.append("name", name);
   formData.append("email", email);
   formData.append("message", message);
+  formData.append("userId", loginUser.id);  // 🔥 사용자 ID 추가
   if (file) formData.append("file", file);
 
   const res = await fetch("/TP/api/inquiry_save.php", {

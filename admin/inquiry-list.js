@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 최신순
       list.reverse().forEach(item => {
+        if (item.answered) return; // 🔥 답변 완료된 문의는 리스트에서 제거
+
         const row = document.createElement("div");
         row.className = "inquiry-row";
 
@@ -19,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         box.appendChild(row);
       });
+
 
       // 문의 개수 업데이트
       const countText = document.getElementById("inquiryCount");
