@@ -11,10 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(res => res.text())
     .then(html => {
       document.getElementById("header").innerHTML = html;
-
-      // ------------------------------------------------------
-      // 2) header가 로드된 이후에 active 적용 실행!!
-      // ------------------------------------------------------
       setActiveMenu();
     });
 });
@@ -23,15 +19,43 @@ document.addEventListener("DOMContentLoaded", () => {
 // 현재 메뉴 active 설정 함수
 // ------------------------------------------------------
 function setActiveMenu() {
-  const current = window.location.pathname.split("/").pop(); // ex) recipe-list.php
+  const current = window.location.pathname.split("/").pop();
 
   const links = document.querySelectorAll(".admin-subnav a");
-
   links.forEach(link => {
-    let href = link.getAttribute("href");
-
-    if (href === current) {
-      link.classList.add("active");
-    }
+    const href = link.getAttribute("href");
+    if (href === current) link.classList.add("active");
   });
+}
+
+// ------------------------------------------------------
+// 공지사항 저장 함수
+// ------------------------------------------------------
+function saveNotice() {
+  const text = document.getElementById("noticeText").value.trim();
+
+  if (!text) {
+    alert("공지사항을 입력해주세요!");
+    return;
+  }
+
+  const data = {
+    message: text,
+    date: new Date().toISOString().slice(0, 10)
+  };
+
+  fetch("save_notice.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+    .then(res => res.text())
+    .then(msg => {
+      alert("공지사항이 등록되었습니다!");
+      location.reload();
+    })
+    .catch(err => {
+      console.error(err);
+      alert("오류가 발생했습니다.");
+    });
 }

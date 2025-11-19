@@ -13,7 +13,7 @@
       <h1 class="brand">만능레시피</h1>
     </a>
 
-    <!-- ✅ [수정] 로그인 상태 표시 영역 -->
+    <!-- 로그인 상태 표시 영역 -->
     <div class="login-area">
       <a href="login.html" class="link">로그인</a> /
       <a href="signup.html" class="link">회원가입</a>
@@ -28,28 +28,25 @@
   </nav>
 
   <main class="container">
-    <h2 class="support-title">❤ FAQ</h2>
-    <button class="btn-back" onclick="location.href='support.html'">돌아가기</button>
-    <section class="faq-box">
-      <h3>[회원 관련]</h3>
-      <p><b>Q.</b> 회원가입은 꼭 해야 하나요?<br>
-         <b>A.</b> 비회원도 기본 레시피 검색은 가능하지만, AI 추천 및 저장 기능은 로그인 후 이용 가능합니다.</p>
+    <div class="faq-header">
+      <h2 class="support-title">❤ FAQ</h2>
+      <button class="btn-back" onclick="location.href='support.html'">돌아가기</button>
+    </div>
 
-      <h3>[AI 추천 관련]</h3>
-      <p><b>Q.</b> AI 추천은 어떤 기준으로 레시피를 보여주나요?<br>
-         <b>A.</b> 사용자가 입력한 재료와 이전 선호 기록을 기반으로, AI가 조리 가능성과 인기도를 종합 분석해 추천합니다.</p>
 
-      <p><b>Q.</b> 추천 결과가 마음에 들지 않아요. 다시 추천받을 수 있나요?<br>
-         <b>A.</b> 물론입니다! 재료를 수정하고 다시 검색하면 새로운 추천 결과를 확인할 수 있습니다.</p>
+    <!-- 🔥 FAQ 내용이 동적으로 들어올 영역 -->
+    <section class="faq-box" id="faqBox">
+      <!-- 자바스크립트에서 faq.json 읽어서 자동으로 넣어줌 -->
+      <p style="color:#888;">FAQ를 불러오는 중입니다...</p>
     </section>
   </main>
 
   <footer class="footer">© 2025 만능레시피</footer>
 
-  <!-- ✅ [삭제] 기존 하드코딩 JS -->
-  <!-- <script>const isLoggedIn = false; ...</script> -->
-
-  <!-- ✅ [추가] nav_user.js로 로그인 상태 자동 처리 -->
   <script src="js/nav_user.js"></script>
+
+  <!-- 🔥 FAQ 렌더링 스크립트 -->
+  <script src="js/faq.js"></script>
+
 </body>
 </html>

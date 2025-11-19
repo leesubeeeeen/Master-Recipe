@@ -14,12 +14,21 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
   <meta charset="UTF-8">
   <title>공지사항 등록</title>
   <link rel="stylesheet" href="admin.css">
-  <script src="admin.js" defer></script>
 </head>
 
 <body>
 <div id="header"></div>
-<script>fetch("header.html").then(r=>r.text()).then(h=>header.innerHTML=h);</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("header.html")
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById("header").innerHTML = html;
+    })
+    .catch(err => console.error("header load error:", err));
+});
+</script>
 
 <div class="admin-container">
 
@@ -34,5 +43,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
   </div>
 
 </div>
+
+<!-- admin.js 동작하기 위해 맨 마지막에 넣기-->
+<script src="admin.js"></script>
+
 </body>
 </html>
