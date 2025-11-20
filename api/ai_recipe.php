@@ -2,6 +2,14 @@
 require "key.php";
 
 $ingredients = $_POST['ingredients'] ?? '';
+$ruleFile = file_get_contents("../data/ai_rule.json");
+$rule = json_decode($ruleFile, true);
+
+$timeMin = $rule['timeMin'];
+$timeMax = $rule['timeMax'];
+$style = $rule['style'];
+$format = $rule['format'];
+$keyword = $rule['keyword'];
 
 if (!$ingredients) {
   echo json_encode(["error" => "ingredients is required"]);
@@ -10,10 +18,18 @@ if (!$ingredients) {
 
 $prompt = "
 너는 요리 전문가 AI이다.
+
+📌 관리자 설정:
+- 추천 조리시간: {$timeMin}~{$timeMax} 분
+- 설명 스타일: {$style}
+- 응답 포맷 규칙: {$format}
+- 자주 추천하고 싶은 재료: {$keyword}
+
 사용자가 가진 재료: $ingredients
 
-이 재료로 만들 수 있는 요리 5개를
-아래 JSON형태로만 반환해라.
+위 조건을 기반으로 사용자가 만들기 좋은 요리 5개를
+무조건 JSON 형태로만 반환하라.
+JSON 외의 글은 절대 금지한다.
 
 [
   {

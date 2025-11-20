@@ -1,61 +1,129 @@
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const recipeGrid = document.getElementById("recipeGrid");
 
-  const recipes = [
-    { id: 1, title: "제육볶음", img: "assets/제육볶음.png", likes: 124, link: "popular_detail.html" },
-    { id: 2, title: "삼계탕", img: "assets/삼계탕.png", likes: 87, link: "#" },
-    { id: 3, title: "마라탕", img: "assets/마라탕.png", likes: 65, link: "#" },
-    { id: 4, title: "냉우동", img: "assets/냉우동.png", likes: 115, link: "#" },
-  ];
+  // 0) 로그인 상태 확인
+  const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+  const isLoggedIn = !!(currentUser && currentUser.name);
 
-  // [수정] 좋아요 목록을 저장하는 likedRecipes 변수 생성
+  // 1) 좋아요 저장 데이터 불러오기 (id 기반)
   let likedRecipes = JSON.parse(localStorage.getItem("likedRecipes")) || [];
 
-  recipes.forEach((r) => {
+  // 2) recipes.json 불러오기
+  const res = await fetch("/TP/data/recipes.json");
+  const recipes = await res.json();
+
+  /**
+   * ------------------------------------------
+   * 3) 제목(title) 기준으로 묶기 + 좋아요 합산
+   * ------------------------------------------
+   */
+  const map = {};
+
+  // (A) recipes.json 기반으로 초기값 만들기
+  recipes.forEach(r => {
+    if (!map[r.title]) {
+      map[r.title] = {
+        title: r.title,
+        img: r.image_url ?? "assets/logo.png",
+        likes: 0,
+        id: r.id
+      };
+    }
+  });
+
+  // (B) likedRecipes 기반으로 좋아요 누적
+  likedRecipes.forEach(l => {
+    if (!map[l.title]) {
+      map[l.title] = {
+        title: l.title,
+        img: l.image_url,
+        likes: 1,
+        id: l.id
+      };
+    } else {
+      map[l.title].likes += 1;
+    }
+  });
+
+  /**
+   * ------------------------------------------
+   * 4) 좋아요 많은 순 상위 4개
+   * ------------------------------------------
+   */
+  const top4 = Object.values(map)
+    .sort((a, b) => b.likes - a.likes)
+    .slice(0, 4);
+
+  /**
+   * ------------------------------------------
+   * 5) 카드 렌더링
+   * ------------------------------------------
+   */
+  recipeGrid.innerHTML = "";
+
+  top4.forEach(r => {
+    // 로그인 상태일 때만 active 적용
+    const isLiked = isLoggedIn && likedRecipes.some(l => l.title === r.title);
+
     const card = document.createElement("div");
     card.classList.add("recipe-card-popular");
-
-    const isLiked = likedRecipes.some((item) => item.title === r.title);
-
-    //[추가] 이미 좋아요 한 레시피라면 +1 증가된 상태로 표시하는 기능 추가 
-    const displayLikes = isLiked ? r.likes + 1 : r.likes;
 
     card.innerHTML = `
       <img src="${r.img}" alt="${r.title}" class="popular-img" />
       <h3 class="popular-name">${r.title}</h3>
-      <p class="popular-likes">♥ <span class="like-count">${displayLikes}</span></p>
-      <button class="heart-btn ${isLiked ? "active" : ""}" data-title="${r.title}" data-img="${r.img}">❤</button>
-      <a href="${r.link}" class="btn-view">레시피 보기</a>
+      <p class="popular-likes">♥ <span class="like-count">${r.likes}</span></p>
+
+      <button class="heart-btn ${isLiked ? "active" : ""}"
+              data-title="${r.title}"
+              data-id="${r.id}"
+              data-img="${r.img}">
+        ❤
+      </button>
+
+      <a href="recipe_saved_detail.html?id=${encodeURIComponent(r.id)}"
+         class="btn-view">레시피 보기</a>
     `;
 
     recipeGrid.appendChild(card);
   });
 
+  /**
+   * ------------------------------------------
+   * 6) 좋아요 토글 기능
+   *    로그인 상태일 때만 가능!
+   * ------------------------------------------
+   */
   recipeGrid.addEventListener("click", (e) => {
-    if (e.target.classList.contains("heart-btn")) {
-      const button = e.target;
-      const card = button.closest(".recipe-card-popular");
-      const title = button.getAttribute("data-title");
-      const img = button.getAttribute("data-img");
-      const likeCountEl = card.querySelector(".like-count");
-      let likeCount = parseInt(likeCountEl.textContent);
+    if (!e.target.classList.contains("heart-btn")) return;
 
-      const liked = button.classList.toggle("active");
-
-      if (liked) {
-        likeCount++;
-        likedRecipes.push({ id: Date.now(), title, img });
-        alert(`❤️ ${title}이(가) 좋아요 목록에 추가되었습니다!`);
-      } else {
-        likeCount--;
-        likedRecipes = likedRecipes.filter((r) => r.title !== title);
-        alert(`💔 ${title} 좋아요가 해제되었습니다.`);
-      }
-
-      likeCountEl.textContent = likeCount;
-
-      localStorage.setItem("likedRecipes", JSON.stringify(likedRecipes));
+    // 로그인 여부 체크
+    if (!isLoggedIn) {
+      alert("로그인이 필요한 기능입니다.");
+      return;
     }
+
+    const btn = e.target;
+    const title = btn.dataset.title;
+    const img = btn.dataset.img;
+    const id = btn.dataset.id;
+
+    const card = btn.closest(".recipe-card-popular");
+    const countEl = card.querySelector(".like-count");
+    let count = parseInt(countEl.textContent);
+
+    const exists = likedRecipes.some(r => r.id === id);
+
+    if (exists) {
+      likedRecipes = likedRecipes.filter(r => r.id !== id);
+      btn.classList.remove("active");
+      count -= 1;
+    } else {
+      likedRecipes.push({ id, title, image_url: img });
+      btn.classList.add("active");
+      count += 1;
+    }
+
+    countEl.textContent = count;
+    localStorage.setItem("likedRecipes", JSON.stringify(likedRecipes));
   });
 });
