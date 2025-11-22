@@ -1,3 +1,5 @@
+//관리자 전용 admin 폴더에서 사용하는 admin.js. 관리자 계정이 이용한다.
+
 // 로그아웃
 function logout() {
   window.location.href = "../logout.php";

@@ -1,4 +1,4 @@
-// ingredient_input.js
+
 document.addEventListener("DOMContentLoaded", () => {
   const openModalBtn = document.getElementById("openModal");
   const closeModalBtn = document.getElementById("closeModal");
@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const editBtn = document.getElementById("editBtn");
   const clearBtn = document.getElementById("clearBtn");
 
-  // ✅ 저장된 재료 복원
+ 
   let ingredients = JSON.parse(localStorage.getItem("ingredients")) || [];
   renderMainTags();
 
-  // 모달 열기/닫기
+
   openModalBtn.addEventListener("click", () => modal.classList.remove("hidden"));
   closeModalBtn.addEventListener("click", () => modal.classList.add("hidden"));
   finishBtn.addEventListener("click", () => {
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     saveIngredients();
   });
 
-  // 재료 입력
+ 
   input.addEventListener("keypress", (e) => {
     if (e.key === "Enter" && input.value.trim() !== "") {
       e.preventDefault();
@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 태그 렌더링 (모달 내부)
   function renderTags() {
     tagContainer.innerHTML = "";
     ingredients.forEach((item) => {
@@ -54,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 메인 태그 렌더링 (화면에 표시)
   function renderMainTags() {
     ingredientBox.innerHTML = "";
     if (ingredients.length > 0) {
@@ -71,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 재료 수정/삭제
   editBtn.addEventListener("click", () => {
     renderTags();
     modal.classList.remove("hidden");
@@ -86,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ✅ localStorage 저장 함수
   function saveIngredients() {
     localStorage.setItem("ingredients", JSON.stringify(ingredients));
   }

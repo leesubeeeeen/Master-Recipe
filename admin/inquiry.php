@@ -1,3 +1,5 @@
+<!--관리자 전용 문의사항 보기 페이지-->
+
 <?php
 session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {

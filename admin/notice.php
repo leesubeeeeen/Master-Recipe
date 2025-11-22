@@ -1,3 +1,4 @@
+<!--관리자 전용 공지사항 등록 페이지-->
 <?php
 session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
