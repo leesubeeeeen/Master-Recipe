@@ -1,3 +1,4 @@
+//[추가] 관리자 계정이 레시피 수정할 수 있게 하는 로직 js
 document.addEventListener("DOMContentLoaded", () => {
   const id = new URLSearchParams(location.search).get("id");
 

@@ -1,3 +1,4 @@
+//[추가] 레시피 리스트 보여주는 로직 js
 const recipeGrid = document.getElementById("recipeGrid");
 
 document.addEventListener("DOMContentLoaded", loadRecipes);

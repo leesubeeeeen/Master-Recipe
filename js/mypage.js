@@ -1,9 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
   const userGreeting = document.getElementById("userGreeting");
-  const recentContainer = document.getElementById("recentIngredients");
+  const recentContainer = document.getElementById("recentIngredients"); // 기존 재료 태그(회색 박스)
   const likedContainer = document.getElementById("likedRecipes");
 
+  const recentBox = document.getElementById("recentIngredients"); // [수정] id 수정
+
+  // --------------------------
+  // 🔐 로그인 체크
+  // --------------------------
   if (!currentUser) {
     alert("로그인이 필요합니다.");
     window.location.href = "login.html";
@@ -12,7 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   userGreeting.textContent = `${currentUser.name}님의 마이페이지`;
 
-  // 최근 재료
+
+  // --------------------------
+  // 🟣 1) 기존 재료(회색 박스 안 태그)
+  // --------------------------
   const ingredients = JSON.parse(localStorage.getItem("ingredients")) || [];
   ingredients.forEach(item => {
     const tag = document.createElement("span");
@@ -21,7 +29,34 @@ document.addEventListener("DOMContentLoaded", () => {
     recentContainer.appendChild(tag);
   });
 
-  // ❤️ 좋아요 목록 표시
+
+  // --------------------------
+// 🟡 2) 최근 검색 재료(8개) — 좌측 박스
+// --------------------------
+
+
+  if (recentBox) {
+    let list = JSON.parse(localStorage.getItem("recent_ingredients")) || [];
+
+    recentBox.innerHTML = "";
+
+    if (list.length === 0) {
+      recentBox.innerHTML = "<p class='empty'>최근 검색한 재료가 없습니다.</p>";
+    } else {
+      list.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "recent-item";
+        div.innerText = item;
+        recentBox.appendChild(div);
+      });
+    }
+  }
+
+
+
+  // --------------------------
+  // ❤️ 3) 좋아요 목록
+  // --------------------------
   const liked = JSON.parse(localStorage.getItem("likedRecipes")) || [];
 
   if (liked.length > 0) {
@@ -47,7 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// ------------------------------------------------------
 // ❤️ 좋아요 해제 처리
+// ------------------------------------------------------
 document.addEventListener("click", (e) => {
   if (!e.target.classList.contains("heart-btn")) return;
 

@@ -1,3 +1,5 @@
+//[추가] 관리자 전용 admin폴더에서 사용하는 faq 등록 로직 js파일
+
 document.addEventListener("DOMContentLoaded", () => {
   // 관리자 페이지인지 확인
   const adminBox = document.getElementById("adminFaqBox");

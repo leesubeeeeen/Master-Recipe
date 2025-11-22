@@ -1,3 +1,4 @@
+<!--[추가] 관리자 계정에서 문의사항 저장 php -->
 <?php
 // POST JSON 받기
 $newFaq = json_decode(file_get_contents("php://input"), true);

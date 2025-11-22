@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const openModalBtn = document.getElementById("openModal");
   const closeModalBtn = document.getElementById("closeModal");
@@ -11,28 +10,55 @@ document.addEventListener("DOMContentLoaded", () => {
   const editBtn = document.getElementById("editBtn");
   const clearBtn = document.getElementById("clearBtn");
 
- 
   let ingredients = JSON.parse(localStorage.getItem("ingredients")) || [];
   renderMainTags();
 
-
   openModalBtn.addEventListener("click", () => modal.classList.remove("hidden"));
   closeModalBtn.addEventListener("click", () => modal.classList.add("hidden"));
+
   finishBtn.addEventListener("click", () => {
     modal.classList.add("hidden");
     renderMainTags();
     saveIngredients();
   });
 
- 
+  // ===============================
+  // [추가] 최근 검색 재료 저장 함수. 이걸로 최근 검색어 반영 가능
+  // ===============================
+  function saveRecentIngredient(keyword) {
+    if (!keyword || keyword.trim() === "") return;
+
+    let list = JSON.parse(localStorage.getItem("recent_ingredients")) || [];
+
+    // 중복 제거
+    list = list.filter(item => item !== keyword);
+
+    // 맨 앞에 추가
+    list.unshift(keyword);
+
+    // 최대 8개 제한
+    if (list.length > 8) list = list.slice(0, 8);
+
+    localStorage.setItem("recent_ingredients", JSON.stringify(list));
+  }
+
+  // ===============================
+  // 🔥 Enter로 재료 입력 → recent에도 저장!
+  // ===============================
   input.addEventListener("keypress", (e) => {
     if (e.key === "Enter" && input.value.trim() !== "") {
       e.preventDefault();
       const ingredient = input.value.trim();
+
+      // 재료 입력 리스트 저장
       if (!ingredients.includes(ingredient)) {
         ingredients.push(ingredient);
         renderTags();
       }
+
+      // 🔥 이 순간 recent_ingredients에 저장
+      saveRecentIngredient(ingredient);
+
       input.value = "";
       saveIngredients();
     }

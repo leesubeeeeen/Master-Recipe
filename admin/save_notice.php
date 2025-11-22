@@ -1,3 +1,4 @@
+<!--[추가] 관리자 계정에서 공지사항 저장 php -->
 <?php
 // JSON 입력 받기
 $data = json_decode(file_get_contents("php://input"), true);

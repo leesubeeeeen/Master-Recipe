@@ -1,3 +1,5 @@
+//[추가] 관리자 계정에서 ai 로직 업데이트 시킬때 사용하는 js
+
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.querySelector(".btn-submit");
 

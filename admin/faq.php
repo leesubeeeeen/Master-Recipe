@@ -1,3 +1,5 @@
+<!--[추가] 관리자 전용  faq 작성 페이지-->
+
 <?php
 session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {

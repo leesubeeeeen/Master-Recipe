@@ -1,3 +1,4 @@
+<!--[추가] 관리자 전용 문의사항 저장 php-->
 <?php
 $id = $_POST["id"];
 $answer = $_POST["answer"];

@@ -1,4 +1,4 @@
-<!--관리자 전용 고객지원 페이지-->
+<!--[추가] 관리자 전용 고객지원 페이지-->
 <?php
 session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {

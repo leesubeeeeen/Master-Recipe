@@ -1,3 +1,4 @@
+// [추가] 문의사항 list 보여주고, 답변 완료된 리스트는 제거하는 로직 js
 document.addEventListener("DOMContentLoaded", () => {
   fetch("../data/inquiries.json")
     .then(res => res.json())
