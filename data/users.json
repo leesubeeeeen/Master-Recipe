@@ -18,5 +18,15 @@
         "liked": [],
         "recentSearch": [],
         "createdAt": "2025-11-17 01:38"
+    },
+    {
+        "id": "test456",
+        "pw": "test456",
+        "name": "테스트456",
+        "email": "test456@naver.com",
+        "phone": "",
+        "liked": [],
+        "recentSearch": [],
+        "createdAt": "2025-11-22 20:20"
     }
 ]

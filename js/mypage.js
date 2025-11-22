@@ -31,12 +31,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // --------------------------
-// 🟡 2) 최근 검색 재료(8개) — 좌측 박스
-// --------------------------
+  // 🟡 2) 최근 검색 재료(8개) — 좌측 박스
+  // --------------------------
 
 
   if (recentBox) {
-    let list = JSON.parse(localStorage.getItem("recent_ingredients")) || [];
+    const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+    const key = `recent_ingredients_${currentUser.id}`;
+
+    let list = JSON.parse(localStorage.getItem(key)) || [];
+
 
     recentBox.innerHTML = "";
 
@@ -57,7 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // --------------------------
   // ❤️ 3) 좋아요 목록
   // --------------------------
-  const liked = JSON.parse(localStorage.getItem("likedRecipes")) || [];
+  const likeKey = `likedRecipes_${currentUser.id}`;
+  const liked = JSON.parse(localStorage.getItem(likeKey)) || [];
+
+
 
   if (liked.length > 0) {
     liked.forEach(r => {
@@ -89,11 +96,13 @@ document.addEventListener("click", (e) => {
   if (!e.target.classList.contains("heart-btn")) return;
 
   const id = e.target.dataset.id;
+  const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+  const likeKey = `likedRecipes_${currentUser.id}`;
 
-  let liked = JSON.parse(localStorage.getItem("likedRecipes")) || [];
+  let liked = JSON.parse(localStorage.getItem(likeKey)) || [];
   liked = liked.filter(r => r.id !== id);
 
-  localStorage.setItem("likedRecipes", JSON.stringify(liked));
+  localStorage.setItem(likeKey, JSON.stringify(liked));
 
   e.target.closest(".recipe-card-popular").remove();
 

@@ -1,9 +1,11 @@
 //[추가] 관리자 전용 admin 폴더에서 사용하는 admin.js. 관리자 계정이 이용한다.
 
-// 로그아웃
 function logout() {
-  window.location.href = "../logout.php";
+  sessionStorage.clear();   // ★ 관리자 로그아웃도 JS 세션 삭제
+  alert("로그아웃 되었습니다.");
+  window.location.href = "../login.html";   // logout.php 갈 필요 없음
 }
+ㄴ
 
 // ------------------------------------------------------
 // 1) header.html을 먼저 로드한다

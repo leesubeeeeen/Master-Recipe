@@ -26,21 +26,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // [추가] 최근 검색 재료 저장 함수. 이걸로 최근 검색어 반영 가능
   // ===============================
   function saveRecentIngredient(keyword) {
-    if (!keyword || keyword.trim() === "") return;
+    const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+    if (!currentUser) return;
 
-    let list = JSON.parse(localStorage.getItem("recent_ingredients")) || [];
+    const key = `recent_ingredients_${currentUser.id}`;
 
-    // 중복 제거
-    list = list.filter(item => item !== keyword);
+    let list = JSON.parse(localStorage.getItem(key)) || [];
 
-    // 맨 앞에 추가
+    list = list.filter(x => x !== keyword);
     list.unshift(keyword);
 
-    // 최대 8개 제한
     if (list.length > 8) list = list.slice(0, 8);
 
-    localStorage.setItem("recent_ingredients", JSON.stringify(list));
+    localStorage.setItem(key, JSON.stringify(list));
   }
+
 
   // ===============================
   // 🔥 Enter로 재료 입력 → recent에도 저장!

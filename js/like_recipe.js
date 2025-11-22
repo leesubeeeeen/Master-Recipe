@@ -2,7 +2,12 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const likeBtn = document.getElementById("likeBtn");
-  let likedRecipes = JSON.parse(localStorage.getItem("likedRecipes")) || [];
+  const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));  // ★ 추가 필수
+
+  if (!currentUser) return;
+
+  const likeKey = `likedRecipes_${currentUser.id}`; // ★ 계정별 key
+  let likedRecipes = JSON.parse(localStorage.getItem(likeKey)) || [];
 
   likeBtn.addEventListener("click", () => {
     const id = window.currentRecipeId;
@@ -14,11 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const title = document.getElementById("recipeTitle").textContent.trim();
     const img = document.getElementById("recipeImg").src;
-    const summary = document.getElementById("recipeDesc").textContent;
+    const summary = document.getElementById("recipeDesc").textContent || "";
     const ingredients = document.getElementById("recipeIngredients").textContent.split(",");
     const steps = [...document.querySelectorAll("#recipeSteps li")].map(li => li.textContent);
-    const tip = document.getElementById("recipeTip").textContent;
+    const tip = document.getElementById("recipeTip").textContent || "";
 
+    // 좋아요 여부 확인
     let exists = likedRecipes.some(r => r.id === id);
 
     if (!exists) {
@@ -40,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       alert(`💔 '${title}' 좋아요가 해제되었습니다.`);
     }
 
-    localStorage.setItem("likedRecipes", JSON.stringify(likedRecipes));
+    // ⭐ 여기서 계정별 key로 저장해야 함
+    localStorage.setItem(likeKey, JSON.stringify(likedRecipes));
   });
 });
