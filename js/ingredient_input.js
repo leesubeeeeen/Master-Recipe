@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  if (location.pathname.includes("master_recipe.html")) {
+    localStorage.setItem("ingredients", JSON.stringify([]));
+  }
   const openModalBtn = document.getElementById("openModal");
   const closeModalBtn = document.getElementById("closeModal");
   const modal = document.getElementById("ingredientModal");
