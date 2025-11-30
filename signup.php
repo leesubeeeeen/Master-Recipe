@@ -53,7 +53,6 @@ $newUser = [
     "pw" => $pw,
     "name" => $name,
     "email" => $email,
-    "phone" => "",
     "liked" => [],
     "recentSearch" => [],
     "createdAt" => date("Y-m-d H:i")

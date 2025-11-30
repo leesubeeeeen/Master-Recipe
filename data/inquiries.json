@@ -4,12 +4,12 @@
         "name": "테스트",
         "email": "test123@naver.com",
         "userId": "test123",
-        "message": "앵무새가 너무 귀여워요!",
+        "message": "요새 레시피 업데이트가 안 되는 것 같아요! 최신 유행 요리도 넣어주세요!!",
         "file": "1763456055_2-Profile-Sky.png",
         "created": "2025-11-18 17:54:15",
-        "answer": "",
-        "answered": false,
-        "checked": false
+        "answer": "알겠습니다. 최신 유행 요리 반영하여 업데이트하도록 하겠습니다.\r\n만능레시피 이용해주셔서 감사합니다!",
+        "answered": true,
+        "checked": true
     },
     {
         "id": 1763456624,

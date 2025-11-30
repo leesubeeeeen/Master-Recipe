@@ -5,7 +5,6 @@ function logout() {
   alert("로그아웃 되었습니다.");
   window.location.href = "../login.html";   // logout.php 갈 필요 없음
 }
-ㄴ
 
 // ------------------------------------------------------
 // 1) header.html을 먼저 로드한다

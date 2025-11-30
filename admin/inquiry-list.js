@@ -26,6 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 문의 개수 업데이트
       const countText = document.getElementById("inquiryCount");
-      countText.textContent = `총 ${list.length}건의 신규 문의사항이 있습니다`;
+
+      // answered=false 인 문의만 카운트
+      const newCount = list.filter(item => !item.answered).length;
+
+      countText.textContent = `총 ${newCount}건의 신규 문의사항이 있습니다`;
+
+      //countText.textContent = `총 ${list.length}건의 신규 문의사항이 있습니다`; [삭제] 답변 완료된 문의사항은 카운트하지 않음
     });
 });
