@@ -22,5 +22,17 @@
         "answer": "동의합니다!",
         "answered": true,
         "checked": true
+    },
+    {
+        "id": 1764842763,
+        "name": "테스트",
+        "email": "tset123@naver.com",
+        "userId": "test123",
+        "message": "딸기탕후루도 추가해주세요!",
+        "file": "1764842763_snack.jpeg",
+        "created": "2025-12-04 19:06:03",
+        "answer": "추가했습니다.",
+        "answered": true,
+        "checked": true
     }
 ]

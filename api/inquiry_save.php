@@ -11,7 +11,7 @@ if (!file_exists($filePath)) {
 
 // 기존 데이터 불러오기
 $data = json_decode(file_get_contents($filePath), true);
-if (!is_array($data)) $data = []; // 안전장치
+if (!is_array($data)) $data = []; 
 
 // 업로드 파일 처리
 $uploaded_file_path = "";
@@ -33,12 +33,12 @@ if (isset($_FILES['file']) && $_FILES['file']['error'] === 0) {
 $name = $_POST["name"];
 $email = $_POST["email"];
 $message = $_POST["message"];
-$userId = $_POST["userId"] ?? "";   // 🔥 변경
+$userId = $_POST["userId"] ?? "";   
 
 // id 생성
 $id = time();
 
-// 새로운 문의 객체 (🔥 완전 버전)
+// 새로운 문의 
 $newInquiry = [
     "id" => $id,
     "name" => $name,

@@ -1,3 +1,3 @@
 <?php
-$OPENAI_API_KEY = "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";
+$OPENAI_API_KEY = "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";
 ?>

@@ -63,9 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // --------------------------
   const likeKey = `likedRecipes_${currentUser.id}`;
   const liked = JSON.parse(localStorage.getItem(likeKey)) || [];
-
-
-
   if (liked.length > 0) {
     liked.forEach(r => {
       const card = document.createElement("div");

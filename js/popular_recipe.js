@@ -1,5 +1,3 @@
-// popular_recipe.js — (최종 완성본)
-
 document.addEventListener("DOMContentLoaded", async () => {
   const recipeGrid = document.getElementById("recipeGrid");
 
@@ -10,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
   /* ============================================================
-     ⭐ 모든 계정의 좋아요 합산 — 인기레시피 좋아요 수 계산용
+     모든 계정의 좋아요 합산 — 인기레시피 좋아요 수 계산용
      ============================================================ */
   let allLikes = [];
 
@@ -23,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
   /* ============================================================
-     ⭐ 현재 로그인 계정의 좋아요 목록 — active 표시용
+     현재 로그인 계정의 좋아요 목록 — active 표시용
      ============================================================ */
   let myLikes = JSON.parse(localStorage.getItem(myKey)) || [];
 

@@ -8,7 +8,7 @@ if (!$data) {
     exit;
 }
 
-$path = "../data/notice.json";
+$path = "../data/notice.json"; //저장할 파일 경로
 
 // 파일로 저장
 file_put_contents($path, json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));

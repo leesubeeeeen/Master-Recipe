@@ -1,11 +1,7 @@
-/* ============================================================
-   nav_user.js — 로그인 UI 전역 관리 (수빈용 완성본)
-   ============================================================ */
 
 document.addEventListener("DOMContentLoaded", async () => {
 
   const path = location.pathname.toLowerCase(); 
-  // 예: "/tp/login.html"
 
   // 1️⃣ login / signup 페이지에서는 nav_user.js 완전히 비활성화
   if (path.includes("login.html") || path.includes("signup.html")) {
@@ -35,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       window.location.href = "mypage.html";
     });
 
-    // 🔥 로그아웃 (sessionStorage 확실히 삭제)
+    //  로그아웃 (sessionStorage 확실히 삭제)
     loginArea.querySelector(".logout-btn").addEventListener("click", () => {
       sessionStorage.clear();
       alert("로그아웃되었습니다.");
@@ -43,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     // ---------------------------
-    // 🔥 문의 답변 도착 팝업
+    //  문의 답변 도착 팝업
     // ---------------------------
     try {
       const res = await fetch("/TP/data/inquiries.json");

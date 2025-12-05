@@ -2,6 +2,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+  /* 관리자 권한 여부 체크 */
     echo "<script>
         alert('관리자 전용 페이지입니다.');
         window.location.href = '../login.html';
@@ -30,7 +31,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
   <div class="edit-wrapper">
 
       <div class="img-box">
-        <img id="recipeImg" src="../assets/제육볶음.png" alt="레시피 이미지">
+        <img id="recipeImg" src=" " alt="레시피 이미지">
       </div>
 
       <div class="edit-info">
@@ -49,7 +50,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
         <label>만드는 법</label>
         <textarea class="textarea-box" id="recipeSteps"></textarea>
 
-        <button class="btn-submit" onclick="updateRecipe()">수정하기</button>
+        <button class="btn-submit" onclick="updateRecipe()">수정하기</button> <!--수정하기 버튼 누르면 updateRecipe() 실행-->
 
       </div>
 

@@ -3,7 +3,7 @@
 // POST JSON 받기
 $newFaq = json_decode(file_get_contents("php://input"), true);
 
-$path = "../data/faq.json";
+$path = "../data/faq.json"; //저장할 파일 경로
 
 // 기존 FAQ 불러오기
 $oldFaq = [];

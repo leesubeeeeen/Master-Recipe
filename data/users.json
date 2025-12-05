@@ -28,5 +28,32 @@
         "liked": [],
         "recentSearch": [],
         "createdAt": "2025-11-22 20:20"
+    },
+    {
+        "id": "test789",
+        "pw": "test789",
+        "name": "테스트3",
+        "email": "test789@naver.com",
+        "liked": [],
+        "recentSearch": [],
+        "createdAt": "2025-12-04 17:42"
+    },
+    {
+        "id": "hihi1212",
+        "pw": "hihi1212",
+        "name": "테스트4",
+        "email": "hihi1212@naver.com",
+        "liked": [],
+        "recentSearch": [],
+        "createdAt": "2025-12-04 17:43"
+    },
+    {
+        "id": "scarletsy",
+        "pw": "sy29510184",
+        "name": "김소영",
+        "email": "scarletsy@naver.com",
+        "liked": [],
+        "recentSearch": [],
+        "createdAt": "2025-12-04 17:44"
     }
 ]

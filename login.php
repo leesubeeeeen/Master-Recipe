@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// 🚨 GET 요청으로 login.php 직접 접근하면 바로 login.html로 이동
+// GET 요청으로 login.php 직접 접근하면 바로 login.html로 이동
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("Location: login.html");
     exit;
@@ -29,7 +29,7 @@ if ($admin['id'] === $id && $admin['pw'] === $pw) {
     $_SESSION['name'] = $admin['name'];
     $_SESSION['id']   = $admin['id'];
 
-    // ⭐ 로그인 성공 시 JS로 sessionStorage에 저장
+    //  성공 시 JS로 sessionStorage에 저장
     echo "<script>
         sessionStorage.setItem('currentUser', JSON.stringify({
             id: '{$admin['id']}',

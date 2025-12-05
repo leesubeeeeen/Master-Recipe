@@ -16,10 +16,32 @@ document.addEventListener("DOMContentLoaded", () => {
   })
     .then(res => res.json())
     .then(async data => {
+  if (data.error) {
+    console.error("⚠ GPT API Error:", data.error);
+    container.innerHTML = "<p>AI 서버 응답 오류가 발생했습니다. 잠시 후 다시 시도해주세요.</p>";
+    return;
+  }
 
-      const list = JSON.parse(data.choices[0].message.content);
-      const finalList = [];
+  // choices 존재 여부 확인
+  if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+    console.error("⚠ GPT 응답 구조 이상:", data);
+    container.innerHTML = "<p>AI 응답 형식이 올바르지 않습니다.</p>";
+    return;
+  }
 
+  // JSON 파싱 보호
+  let content = data.choices[0].message.content;
+  let list;
+
+  try {
+    list = JSON.parse(content);
+  } catch (e) {
+    console.error("⚠ JSON 파싱 실패:", content);
+    container.innerHTML = "<p>AI 응답 해석에 실패했습니다.</p>";
+    return;
+  }
+
+  const finalList = [];
       for (let i = 0; i < list.length; i++) {
         const r = list[i];
 
@@ -61,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         finalList.push(r);
       }
 
-      // ★ 추천된 5개 요약 레시피 저장
+      // 5개 요약 레시피 localStorage에 저장
       localStorage.setItem("generatedRecipes", JSON.stringify(finalList));
 
     })

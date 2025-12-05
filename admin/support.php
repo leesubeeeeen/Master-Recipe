@@ -1,7 +1,9 @@
 <!--[추가] 관리자 전용 고객지원 페이지-->
 <?php
 session_start();
+/* 세션 시작 후 관리자 권한 체크 */
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+  /* 관리자가 아니면 접근 차단 및 로그인 페이지로 이동 */
     echo "<script>
         alert('관리자 전용 페이지입니다.');
         window.location.href = '../login.html';

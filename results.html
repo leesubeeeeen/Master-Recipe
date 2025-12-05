@@ -4,22 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>만능레시피 | 추천결과</title>
+
+  <!-- 공통 스타일 시트 -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
+
+  <!-- ===== 상단 헤더 영역 ===== -->
   <header class="topbar">
+    <!-- 로고 + 홈 이동 -->
     <a href="master_recipe.html" class="brand-wrap">
       <img src="assets/logo.png" alt="만능레시피 로고" class="logo" />
       <h1 class="brand">만능레시피</h1>
     </a>
 
+    <!-- 로그인/회원가입 영역 (nav_user.js에서 로그인 시 자동 변경됨) -->
     <div class="login-area">
       <a href="login.html" class="link">로그인</a> /
       <a href="signup.html" class="link">회원가입</a>
     </div>
   </header>
 
+  <!-- ===== 상단 탭 메뉴 ===== -->
   <nav class="tabbar">
     <a class="tab active" href="master_recipe.html">재료입력</a>
     <a class="tab" href="popular_recipe.html">오늘의 인기 레시피</a>
@@ -27,21 +34,28 @@
     <a class="tab" href="support.html">고객지원</a>
   </nav>
 
+  <!-- ===== 추천 결과 메인 콘텐츠 ===== -->
   <main class="container">
     <section class="recommend">
 
+      <!-- 추천 제목 -->
       <h2 class="recommend-title">AI가 추천해요!</h2>
       <p class="recommend-desc">사용자의 재료를 바탕으로 레시피를 추천해봤어요.</p>
 
-      <!-- ⭐️⭐️⭐️ 이걸 반드시 넣어야 JS가 실행됨 -->
+      <!-- 추천 레시피 카드가 JS(result.js)에서 동적으로 채워짐 -->
       <div id="recommendContainer"></div>
 
     </section>
   </main>
 
+  <!-- ===== 푸터 ===== -->
   <footer class="footer">© 2025 만능레시피</footer>
 
+  <!-- 로그인 UI 처리 스크립트 -->
   <script src="js/nav_user.js"></script>
+
+  <!-- AI 추천 결과 렌더링 스크립트 -->
   <script src="js/result.js"></script>
 </body>
 </html>
+>
